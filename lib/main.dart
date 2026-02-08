@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mitto/presentation/splash/splash_page.dart';
-
+import 'package:mitto/core/router/app_router.dart';
 import 'core/theme/app_theme.dart';
 
 void main() {
@@ -10,15 +9,14 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
       title: 'Mitto',
       debugShowCheckedModeBanner: false,
-      theme: AppTheme.light,
+      theme: AppTheme.dark,
       darkTheme: AppTheme.dark,
-      home: SplashPage(),
+      routerConfig: AppRouter.router,
     );
   }
 }
