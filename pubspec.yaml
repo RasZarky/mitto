@@ -15,6 +15,7 @@ dependencies:
   go_router: ^14.2.0
   cupertino_icons: ^1.0.8
   intl_phone_number_input: ^0.7.5
+  local_auth: ^2.2.0
 
 dev_dependencies:
   flutter_test:

@@ -34,7 +34,7 @@ class _VerificationPageState extends State<VerificationPage> {
       // Simple mock validation: "1234" is correct
       if (otp == '1234') {
         // Navigate to home or success page
-        context.go(AppRouter.splash); 
+        context.push(AppRouter.chooseCountry);
       } else {
         setState(() {
           _hasError = true;
