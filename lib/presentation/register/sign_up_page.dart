@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:intl_phone_number_input/intl_phone_number_input.dart';
+import 'package:mitto/core/router/app_router.dart';
 import 'package:mitto/core/widgets/app_button.dart';
 import 'package:mitto/core/widgets/app_text_field.dart';
 import '../../core/theme/app_colors.dart';
@@ -15,9 +17,49 @@ class SignUpPage extends StatefulWidget {
 }
 
 class _SignUpPageState extends State<SignUpPage> {
-  final TextEditingController controller = TextEditingController();
-  String initialCountry = 'CA';
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _phoneController = TextEditingController();
+  
+  String? _emailError;
+  String? _phoneError;
+  
   PhoneNumber number = PhoneNumber(isoCode: 'CA');
+
+  void _validateAndNavigate() {
+    setState(() {
+      _emailError = null;
+      _phoneError = null;
+    });
+
+    final email = _emailController.text.trim();
+    final phone = _phoneController.text.trim();
+
+    bool isValid = true;
+
+    if (email.isEmpty) {
+      setState(() => _emailError = 'Email is required');
+      isValid = false;
+    } else if (!RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$').hasMatch(email)) {
+      setState(() => _emailError = 'Enter a valid email address');
+      isValid = false;
+    }
+
+    if (phone.isEmpty) {
+      setState(() => _phoneError = 'Phone number is required');
+      isValid = false;
+    }
+
+    if (isValid) {
+      context.push(AppRouter.verification);
+    }
+  }
+
+  @override
+  void dispose() {
+    _emailController.dispose();
+    _phoneController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -43,22 +85,36 @@ class _SignUpPageState extends State<SignUpPage> {
                     style: AppTextStyle.lgRegular.copyWith(fontSize: 14),
                   ),
                   const Spacer(),
-                  const AppTextField(
+                  AppTextField(
+                    controller: _emailController,
                     hintText: 'Email',
                     keyboardType: TextInputType.emailAddress,
+                    errorText: _emailError,
+                    onChanged: (_) {
+                      if (_emailError != null) {
+                        setState(() => _emailError = null);
+                      }
+                    },
                   ),
                   const SizedBox(height: 24),
                   AppPhoneField(
                     initialValue: number,
-                    textFieldController: controller,
+                    textFieldController: _phoneController,
+                    errorText: _phoneError,
                     onInputChanged: (PhoneNumber number) {
                       setState(() {
                         this.number = number;
                       });
+                      if (_phoneError != null) {
+                        setState(() => _phoneError = null);
+                      }
                     },
                   ),
                   const SizedBox(height: 24),
-                  AppButton(text: 'Continue', onPressed: () {}),
+                  AppButton(
+                    text: 'Continue',
+                    onPressed: _validateAndNavigate,
+                  ),
                   const SizedBox(height: 24),
                   Center(
                     child: Text.rich(
