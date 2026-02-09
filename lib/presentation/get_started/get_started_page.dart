@@ -1,6 +1,8 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:mitto/core/router/app_router.dart';
 import 'package:mitto/core/theme/app_colors.dart';
 
 import '../../core/theme/app_text_style.dart';
@@ -110,7 +112,7 @@ class _GetStartedPageState extends State<GetStartedPage> {
                         Text(
                           item['title'] as String,
                           textAlign: TextAlign.start,
-                          style: AppTextStyle.h2Semibold
+                          style: AppTextStyle.h2Semibold,
                         ),
                         const SizedBox(height: 48),
                         Expanded(
@@ -138,7 +140,7 @@ class _GetStartedPageState extends State<GetStartedPage> {
                   Expanded(
                     child: AppButton(
                       text: 'Get Started',
-                      onPressed: () {},
+                      onPressed: () => context.push(AppRouter.signUp),
                     ),
                   ),
                 ],

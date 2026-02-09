@@ -14,6 +14,7 @@ dependencies:
 
   go_router: ^14.2.0
   cupertino_icons: ^1.0.8
+  intl_phone_number_input: ^0.7.5
 
 dev_dependencies:
   flutter_test:
@@ -43,13 +44,8 @@ flutter_launcher_icons:
     image_path: "assets/images/logo-dark.png"
 
 flutter:
-
-  # The following line ensures that the Material Icons font is
-  # included with your application, so that you can use the icons in
-  # the material Icons class.
   uses-material-design: true
 
-  # To add assets to your application, add an assets section, like this:
   assets:
     - assets/images/
 
