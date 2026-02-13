@@ -57,7 +57,7 @@ class _NavBaseState extends State<NavBase> {
                       width: 232,
                       height: 56,
                       decoration: BoxDecoration(
-                        color: Colors.white.withOpacity(0.1),
+                        color: Colors.white.withAlpha(26),
                         borderRadius: BorderRadius.circular(1000),
                       ),
                       padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 8),

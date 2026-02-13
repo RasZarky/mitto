@@ -47,7 +47,7 @@ class AppButton extends StatelessWidget {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(borderRadius),
           ),
-          disabledBackgroundColor: backgroundColor.withOpacity(0.6),
+          disabledBackgroundColor: backgroundColor.withAlpha(153),
         ),
         child: isLoading
             ? const Center(
