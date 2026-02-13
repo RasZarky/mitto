@@ -133,7 +133,7 @@ class _GetStartedPageState extends State<GetStartedPage> {
                     child: AppButton(
                       backgroundColor: AppColors.gray50,
                       text: 'Login',
-                      onPressed: () {},
+                      onPressed: () => context.push(AppRouter.login),
                     ),
                   ),
                   const SizedBox(width: 16),
