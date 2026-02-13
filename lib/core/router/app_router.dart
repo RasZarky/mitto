@@ -1,6 +1,7 @@
 import 'package:go_router/go_router.dart';
 import 'package:mitto/presentation/get_started/get_started_page.dart';
 import 'package:mitto/presentation/splash/splash_page.dart';
+import 'package:mitto/presentation/nav_base/base.dart';
 
 import '../../presentation/authentication/choose_country_page.dart';
 import '../../presentation/authentication/create_password_page.dart';
@@ -16,6 +17,7 @@ class AppRouter {
   static const String chooseCountry = '/choose-country';
   static const String createPassword = '/create-password';
   static const String login = '/login';
+  static const String navBase = '/nav-base';
 
   static final router = GoRouter(
     debugLogDiagnostics: true,
@@ -48,6 +50,10 @@ class AppRouter {
       GoRoute(
         path: login,
         builder: (context, state) => const LoginPage(),
+      ),
+      GoRoute(
+        path: navBase,
+        builder: (context, state) => const NavBase(),
       ),
     ],
   );

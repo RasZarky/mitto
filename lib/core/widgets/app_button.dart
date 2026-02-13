@@ -18,10 +18,11 @@ class AppButton extends StatelessWidget {
       left: 16,
     ),
     this.icon,
+    this.isLoading = false,
   });
 
   final String text;
-  final VoidCallback onPressed;
+  final VoidCallback? onPressed;
   final Color backgroundColor;
   final Color textColor;
   final double height;
@@ -29,6 +30,7 @@ class AppButton extends StatelessWidget {
   final double gap;
   final EdgeInsetsGeometry padding;
   final Widget? icon;
+  final bool isLoading;
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +38,7 @@ class AppButton extends StatelessWidget {
       height: height,
       width: double.infinity,
       child: ElevatedButton(
-        onPressed: onPressed,
+        onPressed: isLoading ? null : onPressed,
         style: ElevatedButton.styleFrom(
           backgroundColor: backgroundColor,
           foregroundColor: textColor,
@@ -45,25 +47,32 @@ class AppButton extends StatelessWidget {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(borderRadius),
           ),
+          disabledBackgroundColor: backgroundColor.withOpacity(0.6),
         ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            if (icon != null) ...[
-              icon!,
-              SizedBox(width: gap),
-            ],
-            Text(
-              text,
-              style: TextStyle(
-                color: textColor,
-                fontSize: 16,
-                fontWeight: FontWeight.w600,
+        child: isLoading
+            ? const Center(
+                child: CircularProgressIndicator(
+                  color: AppColors.basicBlack,
+                ),
+              )
+            : Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  if (icon != null) ...[
+                    icon!,
+                    SizedBox(width: gap),
+                  ],
+                  Text(
+                    text,
+                    style: TextStyle(
+                      color: textColor,
+                      fontSize: 16,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                ],
               ),
-            ),
-          ],
-        ),
       ),
     );
   }

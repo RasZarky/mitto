@@ -103,7 +103,7 @@ class _CreatePasswordPageState extends State<CreatePasswordPage> {
       
       // Navigate to splash or home after account creation
       if (mounted) {
-        context.go(AppRouter.splash);
+        context.go(AppRouter.navBase);
       }
     }
   }

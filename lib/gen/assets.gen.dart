@@ -31,10 +31,30 @@ class $AssetsImagesGen {
   List<AssetGenImage> get values => [logoDark, logo, phone1, phone2];
 }
 
+class $AssetsSvgsGen {
+  const $AssetsSvgsGen();
+
+  /// File path: assets/svgs/Grid.svg
+  String get grid => 'assets/svgs/Grid.svg';
+
+  /// File path: assets/svgs/Home.svg
+  String get home => 'assets/svgs/Home.svg';
+
+  /// File path: assets/svgs/List.svg
+  String get list => 'assets/svgs/List.svg';
+
+  /// File path: assets/svgs/Notification.svg
+  String get notification => 'assets/svgs/Notification.svg';
+
+  /// List of all assets
+  List<String> get values => [grid, home, list, notification];
+}
+
 class Assets {
   const Assets._();
 
   static const $AssetsImagesGen images = $AssetsImagesGen();
+  static const $AssetsSvgsGen svgs = $AssetsSvgsGen();
 }
 
 class AssetGenImage {

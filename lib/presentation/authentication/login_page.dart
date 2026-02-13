@@ -20,8 +20,9 @@ class _LoginPageState extends State<LoginPage> {
 
   String? _emailError;
   String? _passwordError;
+  bool _isLoading = false;
 
-  void _validateAndNavigate() {
+  Future<void> _validateAndNavigate() async {
     setState(() {
       _emailError = null;
       _passwordError = null;
@@ -43,14 +44,17 @@ class _LoginPageState extends State<LoginPage> {
     if (password.isEmpty) {
       setState(() => _passwordError = 'Password is required');
       isValid = false;
-    } else if (password.length < 6) {
-      setState(() => _passwordError = 'Password must be at least 6 characters');
-      isValid = false;
     }
 
     if (isValid) {
+      setState(() => _isLoading = true);
+      
+      // Simulate network request
+      await Future.delayed(const Duration(seconds: 2));
+      
       if (mounted) {
-        context.go(AppRouter.splash);
+        setState(() => _isLoading = false);
+        context.go(AppRouter.navBase);
       }
     }
   }
@@ -112,6 +116,7 @@ class _LoginPageState extends State<LoginPage> {
                   AppButton(
                     text: 'Login',
                     onPressed: _validateAndNavigate,
+                    isLoading: _isLoading,
                   ),
                   const SizedBox(height: 24),
                   Align(
