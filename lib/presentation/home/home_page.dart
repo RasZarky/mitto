@@ -22,7 +22,6 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.primary700,
       appBar: AppAppBar(
         leading: Padding(
           padding: const EdgeInsets.only(left: 16.0),

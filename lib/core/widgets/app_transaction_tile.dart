@@ -77,7 +77,8 @@ class AppTransactionTile extends StatelessWidget {
             ),
             Text(
               amount,
-              style: AppTextStyle.baseSemibold.copyWith(color: AppColors.basicWhite),
+              style: AppTextStyle.baseSemibold.copyWith(color: title == 'Transfer In' ?
+              AppColors.accentGreen : AppColors.basicWhite),
             ),
           ],
         ),

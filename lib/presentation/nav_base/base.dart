@@ -26,7 +26,7 @@ class _NavBaseState extends State<NavBase> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.primary700,
+      backgroundColor: AppColors.gray900,
       body: Stack(
         children: [
           _pages[_currentIndex],

@@ -46,8 +46,14 @@ class $AssetsSvgsGen {
   /// File path: assets/svgs/Notification.svg
   String get notification => 'assets/svgs/Notification.svg';
 
+  /// File path: assets/svgs/Search.svg
+  String get search => 'assets/svgs/Search.svg';
+
   /// File path: assets/svgs/card.svg
   String get card => 'assets/svgs/card.svg';
+
+  /// File path: assets/svgs/filter.svg
+  String get filter => 'assets/svgs/filter.svg';
 
   /// File path: assets/svgs/plus.svg
   String get plus => 'assets/svgs/plus.svg';
@@ -56,7 +62,17 @@ class $AssetsSvgsGen {
   String get send => 'assets/svgs/send.svg';
 
   /// List of all assets
-  List<String> get values => [grid, home, list, notification, card, plus, send];
+  List<String> get values => [
+    grid,
+    home,
+    list,
+    notification,
+    search,
+    card,
+    filter,
+    plus,
+    send,
+  ];
 }
 
 class Assets {
