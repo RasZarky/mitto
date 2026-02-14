@@ -17,6 +17,7 @@ dependencies:
   intl_phone_number_input: ^0.7.5
   local_auth: ^2.2.0
   flutter_svg: ^2.2.3
+  cached_network_image: ^3.4.1
 
 dev_dependencies:
   flutter_test:

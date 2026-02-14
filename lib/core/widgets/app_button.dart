@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:mitto/core/theme/app_colors.dart';
 
+enum AppButtonIconPosition { left, right }
+
 class AppButton extends StatelessWidget {
   const AppButton({
     required this.text,
@@ -18,6 +20,7 @@ class AppButton extends StatelessWidget {
       left: 16,
     ),
     this.icon,
+    this.iconPosition = AppButtonIconPosition.left,
     this.isLoading = false,
   });
 
@@ -30,6 +33,7 @@ class AppButton extends StatelessWidget {
   final double gap;
   final EdgeInsetsGeometry padding;
   final Widget? icon;
+  final AppButtonIconPosition iconPosition;
   final bool isLoading;
 
   @override
@@ -59,7 +63,7 @@ class AppButton extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  if (icon != null) ...[
+                  if (icon != null && iconPosition == AppButtonIconPosition.left) ...[
                     icon!,
                     SizedBox(width: gap),
                   ],
@@ -71,6 +75,10 @@ class AppButton extends StatelessWidget {
                       fontWeight: FontWeight.w600,
                     ),
                   ),
+                  if (icon != null && iconPosition == AppButtonIconPosition.right) ...[
+                    SizedBox(width: gap),
+                    icon!,
+                  ],
                 ],
               ),
       ),
